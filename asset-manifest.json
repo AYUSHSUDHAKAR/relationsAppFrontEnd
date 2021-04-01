@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/relationsAppFrontEnd/static/css/main.11132a04.chunk.css",
+    "main.js": "/relationsAppFrontEnd/static/js/main.032759a2.chunk.js",
+    "main.js.map": "/relationsAppFrontEnd/static/js/main.032759a2.chunk.js.map",
+    "runtime-main.js": "/relationsAppFrontEnd/static/js/runtime-main.fbedd845.js",
+    "runtime-main.js.map": "/relationsAppFrontEnd/static/js/runtime-main.fbedd845.js.map",
+    "static/js/2.d14ed0a5.chunk.js": "/relationsAppFrontEnd/static/js/2.d14ed0a5.chunk.js",
+    "static/js/2.d14ed0a5.chunk.js.map": "/relationsAppFrontEnd/static/js/2.d14ed0a5.chunk.js.map",
+    "static/js/3.c6e2d214.chunk.js": "/relationsAppFrontEnd/static/js/3.c6e2d214.chunk.js",
+    "static/js/3.c6e2d214.chunk.js.map": "/relationsAppFrontEnd/static/js/3.c6e2d214.chunk.js.map",
+    "index.html": "/relationsAppFrontEnd/index.html",
+    "static/css/main.11132a04.chunk.css.map": "/relationsAppFrontEnd/static/css/main.11132a04.chunk.css.map",
+    "static/js/2.d14ed0a5.chunk.js.LICENSE.txt": "/relationsAppFrontEnd/static/js/2.d14ed0a5.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fbedd845.js",
+    "static/js/2.d14ed0a5.chunk.js",
+    "static/css/main.11132a04.chunk.css",
+    "static/js/main.032759a2.chunk.js"
+  ]
+}
