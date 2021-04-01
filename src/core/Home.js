@@ -30,17 +30,13 @@ const Home = () => {
     console.log(name);
     addPeople({ name })
       .then((data) => {
-        if (data.error) {
-          setValues({ ...values, error: data.error, success: false });
-        } else {
-          // setValues({
-          //   ...values,
-          //   name: "",
-          //   error: "",
-          //   success: true,
-          // });
-          preload();
-        }
+        // setValues({
+        //   ...values,
+        //   name: "",
+        //   error: "",
+        //   success: true,
+        // });
+        preload();
       })
       .catch((err) => {
         console.log("error in Add People");
@@ -53,18 +49,14 @@ const Home = () => {
     console.log(name);
     updatePeople({ name, oldName })
       .then((data) => {
-        if (data.error) {
-          setValues({ ...values, error: data.error, success: false });
-        } else {
-          // setValues({
-          //   ...values,
-          //   name: "",
-          //   oldName: "",
-          //   error: "",
-          //   success: true,
-          // });
-          preload();
-        }
+        // setValues({
+        //   ...values,
+        //   name: "",
+        //   oldName: "",
+        //   error: "",
+        //   success: true,
+        // });
+        preload();
       })
       .catch((err) => {
         console.log("error in Update People");
@@ -77,17 +69,13 @@ const Home = () => {
     console.log(name);
     deletePeople({ name })
       .then((data) => {
-        if (data.error) {
-          setValues({ ...values, error: data.error, success: false });
-        } else {
-          setValues({
-            ...values,
-            name: "",
-            error: "",
-            success: true,
-          });
-          preload();
-        }
+        setValues({
+          ...values,
+          name: "",
+          error: "",
+          success: true,
+        });
+        preload();
       })
       .catch((err) => {
         console.log("error in Delete People");
@@ -95,13 +83,19 @@ const Home = () => {
   };
 
   const preload = () => {
-    getPeople().then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
-        setValues({ ...values, peoples: data, name: "", error: "",oldName:"" });
-      }
-    });
+    getPeople()
+      .then((data) => {
+        setValues({
+          ...values,
+          peoples: data,
+          name: "",
+          error: "",
+          oldName: "",
+        });
+      })
+      .catch((err) => {
+        console.log("error in Preload People");
+      });
   };
 
   useEffect(() => {
@@ -184,9 +178,9 @@ const Home = () => {
           {peoples &&
             peoples.map((people, index) => {
               return (
-                <div className="col-sm-3 mt-4">
+                <div className="col-md-3 mt-4" key={index}>
                   <div className="shadow rounded">
-                    <div className="card bg-dark" key={index}>
+                    <div className="card bg-dark">
                       <div className="card-body text-center">
                         <h5 className="card-title mb-2">{people}</h5>
                         <div className="row">

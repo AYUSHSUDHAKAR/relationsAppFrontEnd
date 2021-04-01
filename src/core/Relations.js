@@ -37,10 +37,8 @@ const Relations = () => {
     event.preventDefault();
     setValues({ ...values, error: false });
 
-    addRelation({ person, relatedTo, relation }).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
-      } else {
+    addRelation({ person, relatedTo, relation })
+      .then((data) => {
         setValues({
           ...values,
           person: "",
@@ -49,18 +47,18 @@ const Relations = () => {
           success: true,
         });
         preload();
-      }
-    });
+      })
+      .catch((err) => {
+        console.log("error in add relation");
+      });
   };
   const onUpdate = (event) => {
     // event.preventDefault();
     // setValues({ ...values, error: false });
     console.log({ person, relatedTo, relation });
 
-    updateRelation({ person, relatedTo, relation }).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
-      } else {
+    updateRelation({ person, relatedTo, relation })
+      .then((data) => {
         setValues({
           ...values,
           person: "",
@@ -69,26 +67,27 @@ const Relations = () => {
           success: true,
           update: false,
         });
-      }
-    });
-    
+      })
+      .catch((err) => {
+        console.log("error in Update relation");
+      });
   };
 
   const onDelete = (person, relatedTo, relation) => {
     // event.preventDefault();
     console.log({ person, relatedTo, relation });
 
-    deleteRelation({ person, relatedTo, relation }).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error, success: false });
-      } else {
+    deleteRelation({ person, relatedTo, relation })
+      .then((data) => {
         setValues({
           ...values,
           success: true,
         });
         preload();
-      }
-    });
+      })
+      .catch((err) => {
+        console.log("error in Delete relation");
+      });
   };
 
   const handleChange = (name) => (event) => {
@@ -98,20 +97,20 @@ const Relations = () => {
   };
 
   const preload = async () => {
-    const people = await getPeople().then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
+    const people = await getPeople()
+      .then((data) => {
         return data;
-      }
-    });
-    const relation = await getRelations().then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
+      })
+      .catch((err) => {
+        console.log("error in People");
+      });
+    const relation = await getRelations()
+      .then((data) => {
         return data;
-      }
-    });
+      })
+      .catch((err) => {
+        console.log("error in relation");
+      });
 
     setValues({ ...values, peoples: people, relations: relation });
   };
@@ -177,7 +176,11 @@ const Relations = () => {
                   <option defaultValue>Choose Person...</option>
                   {peoples &&
                     peoples.map((people, index) => {
-                      return <option value={people}>{people}</option>;
+                      return (
+                        <option key={index} value={people}>
+                          {people}
+                        </option>
+                      );
                     })}
                 </select>
               </div>
@@ -256,9 +259,9 @@ const Relations = () => {
         {relations &&
           relations.map((relation, index) => {
             return (
-              <div className="col-sm-10 offset-sm-1 mt-4">
+              <div key={index} className="col-sm-10 offset-sm-1 mt-4">
                 <div className="shadow rounded">
-                  <div key={index} className="card bg-dark ">
+                  <div className="card bg-dark ">
                     <div className="card-body p-2">
                       <div className="row">
                         <div className="card-title col-sm-7 py-1">

@@ -29,13 +29,13 @@ const Connections = () => {
 
   const onFind = (event) => {
     event.preventDefault();
-    getConnection({ person, connectedTo }).then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
+    getConnection({ person, connectedTo })
+      .then((data) => {
         setValues({ ...values, success: true, connections: data });
-      }
-    });
+      })
+      .catch((err) => {
+        console.log("error in find connection");
+      });
   };
 
   useEffect(() => {
@@ -43,13 +43,13 @@ const Connections = () => {
   }, [connections]);
 
   const preload = () => {
-    getPeople().then((data) => {
-      if (data.error) {
-        setValues({ ...values, error: data.error });
-      } else {
+    getPeople()
+      .then((data) => {
         setValues({ ...values, peoples: data });
-      }
-    });
+      })
+      .catch((err) => {
+        console.log("error in preload connection");
+      });
   };
 
   useEffect(() => {
@@ -92,7 +92,11 @@ const Connections = () => {
                   <option defaultValue>Choose Person...</option>
                   {peoples &&
                     peoples.map((people, index) => {
-                      return <option value={people}>{people}</option>;
+                      return (
+                        <option key={index} value={people}>
+                          {people}
+                        </option>
+                      );
                     })}
                 </select>
               </div>
@@ -116,7 +120,7 @@ const Connections = () => {
     var end = "";
     return (
       <>
-        {success && (
+        {success && connections.length != 0 && (
           <>
             <h2 className="text-dark text-center content">CONNECTION</h2>
             <Timeline align="alternate">
@@ -142,6 +146,11 @@ const Connections = () => {
               </TimelineItem>
             </Timeline>
           </>
+        )}
+        {success && connections.length == 0 && (
+          <h2 className="text-dark text-center mt-5">
+            {person} is not connected to {connectedTo}
+          </h2>
         )}
       </>
     );
