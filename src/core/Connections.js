@@ -37,6 +37,7 @@ const Connections = () => {
     event.preventDefault();
     getConnection({ person, connectedTo })
       .then((data) => {
+        console.log(data);
         setValues({ ...values, success: true, connections: data });
       })
       .catch((err) => {
@@ -134,15 +135,26 @@ const Connections = () => {
               {connections.map((connection, index) => {
                 end = connection.end;
                 return (
-                  <TimelineItem key={index}>
-                    <TimelineSeparator>
-                      <TimelineDot color="secondary" />
-                      <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent className="text-dark">
-                      {connection.start}
-                    </TimelineContent>
-                  </TimelineItem>
+                  <div>
+                    <TimelineItem key={index}>
+                      <TimelineSeparator>
+                        <TimelineDot color="secondary" />
+                        <TimelineConnector />
+                      </TimelineSeparator>
+                      <TimelineContent className="text-dark">
+                        {connection.start}
+                      </TimelineContent>
+                    </TimelineItem>
+                    <TimelineItem>
+                      <TimelineSeparator>
+                        <TimelineDot variant="outlined" />
+                        <TimelineConnector />
+                      </TimelineSeparator>
+                      <TimelineContent className="text-dark">
+                        {connection.relation}
+                      </TimelineContent>
+                    </TimelineItem>
+                  </div>
                 );
               })}
               <TimelineItem>
