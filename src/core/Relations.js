@@ -91,9 +91,14 @@ const Relations = () => {
   };
 
   const handleChange = (name) => (event) => {
-    const value = event.target.value;
+    var value = event.target.value;
     console.log(value);
-    setValues({ ...values, [name]: value });
+    if (value == "Choose Person..." || value == "Choose Relation...") {
+      value = "";
+      setValues({ ...values, [name]: value });
+    } else {
+      setValues({ ...values, [name]: value });
+    }
   };
 
   const preload = async () => {
@@ -188,6 +193,7 @@ const Relations = () => {
                 <button
                   type="button"
                   onClick={onAdd}
+                  disabled={!person || !relatedTo || !relation}
                   className="btn btn-success"
                 >
                   Add
@@ -240,6 +246,7 @@ const Relations = () => {
                 <button
                   type="button"
                   onClick={onUpdate}
+                  disabled={person == "" || relatedTo == "" || relation == ""}
                   className="btn btn-success"
                 >
                   Update

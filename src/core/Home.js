@@ -155,6 +155,7 @@ const Home = () => {
                   <button
                     type="button"
                     onClick={onAdd}
+                    disabled={!name}
                     className="btn btn-success btn-block"
                   >
                     Add {name}
@@ -164,6 +165,7 @@ const Home = () => {
                   <button
                     type="button"
                     onClick={onUpdate}
+                    disabled={!name}
                     className="btn btn-success btn-block"
                   >
                     Update {name}

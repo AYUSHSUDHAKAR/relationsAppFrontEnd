@@ -22,9 +22,15 @@ const Connections = () => {
   const { person, connectedTo, error, success, peoples, connections } = values;
 
   const handleChange = (name) => (event) => {
-    const value = event.target.value;
+    var value = event.target.value;
     console.log(value);
-    setValues({ ...values, [name]: value });
+    // console.log(name);
+    if (value == "Choose Person...") {
+      value = "";
+      setValues({ ...values, [name]: value });
+    } else {
+      setValues({ ...values, [name]: value });
+    }
   };
 
   const onFind = (event) => {
@@ -104,6 +110,7 @@ const Connections = () => {
                 <button
                   type="button"
                   onClick={onFind}
+                  disabled={person == "" || connectedTo == ""}
                   className="btn btn-success"
                 >
                   Find Connection
