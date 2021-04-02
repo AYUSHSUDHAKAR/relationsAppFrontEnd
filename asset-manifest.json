@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/relationsAppFrontEnd/static/css/main.11132a04.chunk.css",
-    "main.js": "/relationsAppFrontEnd/static/js/main.38d571f6.chunk.js",
-    "main.js.map": "/relationsAppFrontEnd/static/js/main.38d571f6.chunk.js.map",
+    "main.js": "/relationsAppFrontEnd/static/js/main.dbb2097b.chunk.js",
+    "main.js.map": "/relationsAppFrontEnd/static/js/main.dbb2097b.chunk.js.map",
     "runtime-main.js": "/relationsAppFrontEnd/static/js/runtime-main.fbedd845.js",
     "runtime-main.js.map": "/relationsAppFrontEnd/static/js/runtime-main.fbedd845.js.map",
     "static/js/2.eab35be0.chunk.js": "/relationsAppFrontEnd/static/js/2.eab35be0.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.fbedd845.js",
     "static/js/2.eab35be0.chunk.js",
     "static/css/main.11132a04.chunk.css",
-    "static/js/main.38d571f6.chunk.js"
+    "static/js/main.dbb2097b.chunk.js"
   ]
 }
